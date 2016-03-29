@@ -16,12 +16,8 @@ public class main {
             e.printStackTrace();
         }
 
-        //Utils.viewGlyph(list.get(3).get(10));
-        System.out.println(Utils.calculEuclideanDistance(list.get(0).get(0), list.get(0).get(0)));
-
-
         ArrayList<LabelledData> randomGlyph = Utils.getRandomGlyhpByClass(list, 100);
-        ArrayList<LabelledData> closeNeighbor = Utils.getCloseNeighbor(list.get(8).get(0), randomGlyph, 10);
+        ArrayList<LabelledData> closeNeighbor = Utils.getCloseNeighbor(list.get(7).get(23), randomGlyph, 10);
 
         System.out.println(Utils.getClassByCloseNeighbor(closeNeighbor));
     }

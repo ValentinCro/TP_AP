@@ -112,7 +112,6 @@ public class Utils {
         }
 
         int i = 0;
-        System.out.println(tmp);
         for (Double key : tmp.keySet()) {
             if (i < k) {
                 result.add(tmp.get(key));
