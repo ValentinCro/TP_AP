@@ -91,8 +91,31 @@ public class Utils {
         for (ArrayList<byte[]> list : glyphes) {
             for (int i = 0 ; i < N; i++) {
                 int nb = (int) (Math.random() * list.size());
-                System.out.println(nb);
                 result.add(new LabelledData(i, list.get(nb)));
+            }
+        }
+
+        return result;
+    }
+
+    public static ArrayList<LabelledData> getCloseNeighbour(byte[] glyphe,
+                         ArrayList<LabelledData> glypheList,
+                         int k) {
+        TreeMap<Double, LabelledData> tmp = new TreeMap<>();
+        ArrayList<LabelledData> result = new ArrayList<>();
+
+        for (LabelledData labelledData : glypheList) {
+            Double distance = Double.valueOf(calculEuclideanDistance(glyphe, labelledData.getGlyph()));
+            tmp.put(distance, labelledData);
+        }
+
+        int i = 0;
+        for (Double key : tmp.keySet()) {
+            if (i < k) {
+                result.add(tmp.get(key));
+                i++;
+            } else {
+                break;
             }
         }
 

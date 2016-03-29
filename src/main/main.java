@@ -19,7 +19,7 @@ public class main {
         //Utils.viewGlyph(list.get(3).get(10));
         System.out.println(Utils.calculEuclideanDistance(list.get(0).get(0), list.get(0).get(0)));
 
-        System.out.print(Utils.getRandomGlyhpByClass(list, 5));
+        Utils.getCloseNeighbour(list.get(0).get(0), Utils.getRandomGlyhpByClass(list, 5), 5);
     }
 
 
