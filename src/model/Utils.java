@@ -84,4 +84,18 @@ public class Utils {
 
 		return result;
 	}
+
+    public static ArrayList<LabelledData> getRandomGlyhpByClass(ArrayList<ArrayList<byte[]>> glyphes, int N) {
+        ArrayList<LabelledData> result = new ArrayList<>();
+
+        for (ArrayList<byte[]> list : glyphes) {
+            for (int i = 0 ; i < N; i++) {
+                int nb = (int) (Math.random() * list.size());
+                System.out.println(nb);
+                result.add(new LabelledData(i, list.get(nb)));
+            }
+        }
+
+        return result;
+    }
 }
