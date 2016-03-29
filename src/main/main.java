@@ -16,6 +16,11 @@ public class main {
             e.printStackTrace();
         }
 
-        Utils.viewGlyph(list.get(0).get(1));
+        //Utils.viewGlyph(list.get(3).get(10));
+        System.out.println(Utils.calculEuclideanDistance(list.get(0).get(0), list.get(0).get(0)));
+        System.out.println(Utils.calculEuclideanDistance(list.get(0).get(0), list.get(0).get(2)));
+        System.out.println(Utils.calculEuclideanDistance(list.get(0).get(0), list.get(4).get(2)));
     }
+
+
 }

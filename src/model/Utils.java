@@ -72,4 +72,16 @@ public class Utils {
         //frmMain.getContentPane().add(gv2);*/
         frmMain.setVisible(true);
 	}
+
+	public static double calculEuclideanDistance(byte[] firstGlyph, byte[] secondGlyph) {
+		double result = 0.0;
+
+		for (int i = 0; i < firstGlyph.length ; i++) {
+			result += Math.pow((firstGlyph[i] - secondGlyph[i]),2.0);
+		}
+
+		result = Math.sqrt(result);
+
+		return result;
+	}
 }
