@@ -1,10 +1,10 @@
 package main;
 
+import model.LabelledData;
 import model.Utils;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class main {
 
@@ -19,7 +19,11 @@ public class main {
         //Utils.viewGlyph(list.get(3).get(10));
         System.out.println(Utils.calculEuclideanDistance(list.get(0).get(0), list.get(0).get(0)));
 
-        Utils.getCloseNeighbour(list.get(0).get(0), Utils.getRandomGlyhpByClass(list, 5), 5);
+
+        ArrayList<LabelledData> randomGlyph = Utils.getRandomGlyhpByClass(list, 100);
+        ArrayList<LabelledData> closeNeighbor = Utils.getCloseNeighbor(list.get(8).get(0), randomGlyph, 10);
+
+        System.out.println(Utils.getClassByCloseNeighbor(closeNeighbor));
     }
 
 

@@ -88,17 +88,19 @@ public class Utils {
     public static ArrayList<LabelledData> getRandomGlyhpByClass(ArrayList<ArrayList<byte[]>> glyphes, int N) {
         ArrayList<LabelledData> result = new ArrayList<>();
 
+        int cls = 0;
         for (ArrayList<byte[]> list : glyphes) {
             for (int i = 0 ; i < N; i++) {
                 int nb = (int) (Math.random() * list.size());
-                result.add(new LabelledData(i, list.get(nb)));
+                result.add(new LabelledData(cls, list.get(nb)));
             }
+            cls++;
         }
 
         return result;
     }
 
-    public static ArrayList<LabelledData> getCloseNeighbour(byte[] glyphe,
+    public static ArrayList<LabelledData> getCloseNeighbor(byte[] glyphe,
                          ArrayList<LabelledData> glypheList,
                          int k) {
         TreeMap<Double, LabelledData> tmp = new TreeMap<>();
@@ -110,6 +112,7 @@ public class Utils {
         }
 
         int i = 0;
+        System.out.println(tmp);
         for (Double key : tmp.keySet()) {
             if (i < k) {
                 result.add(tmp.get(key));
@@ -120,5 +123,30 @@ public class Utils {
         }
 
         return result;
+    }
+
+    public static int getClassByCloseNeighbor(ArrayList<LabelledData> closeNeighbor) {
+        int classe = 0;
+        Map<Integer, Integer> occurenceClasses = new HashMap<>();
+
+        for (LabelledData labelledData : closeNeighbor) {
+            if (occurenceClasses.containsKey(labelledData.getCls())) {
+                occurenceClasses.replace(labelledData.getCls()
+                        , (occurenceClasses.get(labelledData.getCls()) + 1));
+            } else {
+                occurenceClasses.put(labelledData.getCls(), 1);
+            }
+        }
+        for (Integer cls : occurenceClasses.keySet()) {
+            if (!occurenceClasses.containsKey(classe)) {
+                classe = cls;
+            } else {
+                if (occurenceClasses.get(cls) > occurenceClasses.get(classe)) {
+                    classe = cls;
+                }
+            }
+        }
+
+        return classe;
     }
 }
